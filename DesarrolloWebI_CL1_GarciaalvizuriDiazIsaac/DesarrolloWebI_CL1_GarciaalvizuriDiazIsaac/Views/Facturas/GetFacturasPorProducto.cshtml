@@ -4,7 +4,14 @@
     ViewData["Title"] = "GetFacturasPorProducto";
 }
 
-<h1>GetFacturasPorProducto</h1>
+<h1>Facturas Por Producto</h1>
+
+@using (Html.BeginForm())
+{
+    <en>Ingresar nombre de producto: </en>
+    @Html.TextBox("nombre", "")
+    <button>Buscar</button>
+}
 
 <p>
     <a asp-action="Create">Create New</a>

@@ -99,6 +99,26 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
 
         }
 
+        //ActionResult para GetFacturasPorAnioCliente
+        public async Task<IActionResult> GetFacturasPorAnioCliente(int anio = 0, string nombre = "", int pagina = 0)
+        {
+            if (nombre == null)
+                nombre = "";
+            if (anio == 0)
+                anio = 0;
+
+            IEnumerable<Factura> facturas = GetFacturasPorAnioCliente(anio, nombre);
+            int filasPagina = 5;
+            int totalFilas = facturas.Count();
+            int numeroPaginas = totalFilas % filasPagina == 0 ? totalFilas / filasPagina : (totalFilas / filasPagina) + 1;
+
+            ViewBag.pagina = pagina;
+            ViewBag.numeroPaginas = numeroPaginas;
+            ViewBag.nombre = nombre;
+
+            return View(await Task.Run(() => facturas.Skip(pagina * filasPagina).Take(filasPagina)));
+
+        }
 
 
         public IActionResult Index()

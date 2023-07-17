@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration; //para obtener la info de la cadena de conexión del appsettings
 using Microsoft.Data.SqlClient;
 using DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Models;
+using System.Data;
 
 namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
 {
@@ -26,7 +27,7 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
             using (SqlConnection connection = new SqlConnection(this.cadena))
             {
                 SqlCommand cmd = new SqlCommand("sp_GetFacturasPorProducto", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prmstrNombreProducto", nombre);
 
                 connection.Open();

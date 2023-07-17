@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.props" />
+</Project>

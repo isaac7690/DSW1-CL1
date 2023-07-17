@@ -17,6 +17,41 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
             this.cadena = _config["ConnectionStrings:connection"];
         }
 
+
+        //función para ejecutar el SP GetFacturasPorProducto
+        IEnumerable<Factura> GetFacturasPorProducto(string nombre)
+        {
+            List<Factura> facturas = new List<Factura>();
+
+            using (SqlConnection connection = new SqlConnection(this.cadena))
+            {
+                SqlCommand cmd = new SqlCommand("sp_GetFacturasPorProducto", connection);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmstrNombreProducto", nombre);
+
+                connection.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    facturas.Add(new Factura()
+                    {
+                        idFactura = dr.GetInt32(0),
+                        fechaEmision = dr.GetDateTime(1),
+                        nombreProducto = dr.GetString(2),
+                        preciounitario = dr.GetDecimal(3),
+                        cantidad = dr.GetDecimal(4),
+                        monto = dr.GetDecimal(5)
+                    });
+                }
+            }
+            return facturas;
+        }
+
+
+
+
+
         public IActionResult Index()
         {
             return View();

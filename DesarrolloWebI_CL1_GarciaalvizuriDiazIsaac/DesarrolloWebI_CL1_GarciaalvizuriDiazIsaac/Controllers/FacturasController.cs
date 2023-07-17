@@ -69,6 +69,36 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
         }
 
 
+        //funcion para sp_GetFacturasPorAnioCliente
+        IEnumerable<Factura> GetFacturasPorAnioCliente(int anio, string nombre)
+        {
+            List<Factura> facturas = new List<Factura>();
+
+            using (SqlConnection connection = new SqlConnection(this.cadena))
+            {
+                SqlCommand cmd = new SqlCommand("sp_GetFacturasPorAnioCliente", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmintAnio", anio);
+                cmd.Parameters.AddWithValue("@prmstrRazonSocial", nombre);
+
+                connection.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    facturas.Add(new Factura()
+                    {
+                        idFactura = dr.GetInt32(0),
+                        fechaEmision = dr.GetDateTime(1),
+                        razonSocial = dr.GetString(2),
+                        total = dr.GetDecimal(3)
+                    });
+                }
+            }
+            return facturas;
+
+        }
+
 
 
         public IActionResult Index()

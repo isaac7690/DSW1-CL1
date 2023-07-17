@@ -9,7 +9,7 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Models
         [Display(Name = "Cliente")]
         public string? razonSocial { get; set; }
         [Display(Name = "Dirección")]
-        public string? dirección { get; set; }
+        public string? direccion { get; set; }
         [Display(Name = "Teléfono")]
         public string? telefono { get; set; }
         [Display(Name = "ID Categoría")]

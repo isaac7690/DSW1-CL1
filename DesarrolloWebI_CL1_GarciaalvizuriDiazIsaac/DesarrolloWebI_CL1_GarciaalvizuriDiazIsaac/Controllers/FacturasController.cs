@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration; //para obtener la info de la cadena de
 using Microsoft.Data.SqlClient;
 using DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Models;
 using System.Data;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
 {
@@ -123,5 +124,39 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
         {
             return View();
         }
+
+       //funcion para mostrar clientes
+       IEnumerable<Cliente> GetClientes()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+
+            using (SqlConnection connection = new SqlConnection(cadena))
+            {
+                SqlCommand command = new SqlCommand("sp_GetClientes", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+
+                while(dr.Read())
+                {
+                    clientes.Add(new Cliente
+                    {
+                        idCliente = dr.GetInt32(0),
+                        razonSocial = dr.GetString(1),
+                        direccion = dr.GetString(2),
+                        telefono = dr.GetString(3),
+                        idCategoriaCliente = dr.GetInt32(4),
+                        nombreCategoria = dr.GetString(5)  
+                    });
+                }
+
+            }
+            return clientes;
+        }
+            
+        
+        
     }
+             
 }

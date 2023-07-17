@@ -48,6 +48,24 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
             return facturas;
         }
 
+        //Action result SP GetFacturasPorProducto
+        public async Task<IActionResult> GetFacturasPorProducto(string nombre = "", int pagina = 0)
+        {
+            if (nombre == null)
+                nombre = "";
+
+            IEnumerable<Factura> facturas = GetFacturasPorProducto(nombre);
+            int filasPagina = 5;
+            int totalFilas = facturas.Count();
+            int numeroPaginas = totalFilas % filasPagina == 0 ? totalFilas / filasPagina : (totalFilas / filasPagina) + 1;
+
+            ViewBag.pagina = pagina;
+            ViewBag.numeroPaginas = numeroPaginas;
+            ViewBag.nombre = nombre;
+
+            return View(await Task.Run(() => facturas.Skip(pagina * filasPagina).Take(filasPagina)));
+
+        }
 
 
 

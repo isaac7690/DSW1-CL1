@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Isaac\Desktop\DSW1-CL1\DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac\DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Isaac/Desktop/DSW1-CL1/DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac/DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac/Views/Facturas/GetClientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYXNcR2V0Q2xpZW50ZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Isaac/Desktop/DSW1-CL1/DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac/DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac/Views/Facturas/GetFacturasPorAnioCliente.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYXNcR2V0RmFjdHVyYXNQb3JBbmlvQ2xpZW50ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

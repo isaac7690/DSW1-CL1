@@ -166,8 +166,6 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
             ViewBag.numeroPaginas = numeroPaginas;          
 
             return View(await Task.Run(() => clientes.Skip(pagina * filasPagina).Take(filasPagina)));
-
-
         }
         
         

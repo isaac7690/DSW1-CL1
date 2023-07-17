@@ -15,6 +15,11 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Models
         [Display(Name = "Cantidad")]
         public decimal cantidad { get; set; }
         [Display(Name = "Monto")]
-        public decimal monto { get; set; }  
+        public decimal monto { get; set; }
+        
+        [Display(Name = "Cliente")]
+        public string? razonSocial { get; set; }
+        [Display(Name = "Total")]
+        public decimal total { get; set; }
     }
 }

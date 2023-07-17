@@ -63,3 +63,15 @@
 }
     </tbody>
 </table>
+<div>
+    @for (int i = 0; i < ViewBag.numeroPaginas; i++)
+    {
+        @Html.ActionLink(
+    (i+1).ToString(),
+    "GetClientes",
+    "Facturas",
+    new {nombre = ViewBag.nombre,pagina = i},
+    new {@class = "btn btn-primary"}
+    )
+    }
+</div>

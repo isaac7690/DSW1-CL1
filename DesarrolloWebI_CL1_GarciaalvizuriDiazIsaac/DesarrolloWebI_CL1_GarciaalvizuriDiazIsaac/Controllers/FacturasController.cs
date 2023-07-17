@@ -154,7 +154,21 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
             }
             return clientes;
         }
-            
+        
+        public async Task<IActionResult> GetClientes(int pagina = 0)
+        {
+            IEnumerable<Cliente> clientes = GetClientes();
+            int filasPagina = 5;         
+            int totalFilas = clientes.Count();
+            int numeroPaginas = totalFilas % filasPagina == 0 ? totalFilas / filasPagina : (totalFilas / filasPagina) + 1;
+
+            ViewBag.pagina = pagina;
+            ViewBag.numeroPaginas = numeroPaginas;          
+
+            return View(await Task.Run(() => clientes.Skip(pagina * filasPagina).Take(filasPagina)));
+
+
+        }
         
         
     }

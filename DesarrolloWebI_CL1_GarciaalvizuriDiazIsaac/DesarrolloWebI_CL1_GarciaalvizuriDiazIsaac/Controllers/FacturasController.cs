@@ -103,10 +103,8 @@ namespace DesarrolloWebI_CL1_GarciaalvizuriDiazIsaac.Controllers
         public async Task<IActionResult> GetFacturasPorAnioCliente(int anio = 0, string nombre = "", int pagina = 0)
         {
             if (nombre == null)
-                nombre = "";
-            if (anio == 0)
-                anio = 0;
-
+                nombre = "";      
+            
             IEnumerable<Factura> facturas = GetFacturasPorAnioCliente(anio, nombre);
             int filasPagina = 5;
             int totalFilas = facturas.Count();

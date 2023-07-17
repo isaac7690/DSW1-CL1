@@ -4,7 +4,20 @@
     ViewData["Title"] = "GetFacturasPorAnioCliente";
 }
 
-<h1>GetFacturasPorAnioCliente</h1>
+<h1>Facturas por Año y Cliente</h1>
+
+@using (Html.BeginForm())
+{
+    <div>
+    <en>Ingresar Año: </en>
+    @Html.TextBox("anio", "")
+    <br/>
+    <en>Ingresar nombre de Cliente: </en>
+    @Html.TextBox("nombre", "")
+    <br/>
+    <button>Buscar</button>
+    </div>
+}
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -75,3 +88,15 @@
 }
     </tbody>
 </table>
+<div>
+    @for (int i = 0; i < ViewBag.numeroPaginas; i++)
+    {
+        @Html.ActionLink(
+            (i+1).ToString(),
+             "GetFacturasPorAnioCliente",
+             "Facturas",
+             new {nombre = ViewBag.nombre,pagina = i},
+             new {@class = "btn btn-primary"}
+        )
+    }
+</div>
